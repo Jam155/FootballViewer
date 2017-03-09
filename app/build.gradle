@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    useLibrary('org.apache.http.legacy')
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://raw.github.com/rejasupotaro/AsyncRssClient/master/AsyncRssClient/repository' }
 }
 
 dependencies {
@@ -27,4 +33,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     testCompile 'junit:junit:4.12'
+    compile 'rejasupotaro:async-rss-client:0.0.6'
 }
