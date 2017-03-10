@@ -4,13 +4,18 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -30,16 +35,24 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.app_toolbar);
+        setSupportActionBar(myToolbar);
 
         ViewGroup layout = (ViewGroup) findViewById(R.id.rss_feed);
+        //ScoreBoardView scoreboard = (LinearLayout) findViewById(R.id.score_board);
 
-        VideoView videoView = (VideoView) findViewById(R.id.videoview);
+        ReplayVideoView replayVideoView = (ReplayVideoView) findViewById(R.id.replay_video);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.luxury);
+        replayVideoView.setVideo(uri, 10000);
+
+
+        /*VideoView videoView = (VideoView) findViewById(R.id.videoview);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.luxury);
         Log.d("Video", uri.toString());
         //layout.addView(videoView);
         videoView.setVideoURI(uri);
         videoView.seekTo(10000);
-        //videoView.start();
+        //videoView.start();*/
 
         client.read("http://feeds.bbci.co.uk/news/uk/rss.xml", new AsyncRssResponseHandler() {
             @Override
@@ -47,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
                 String title = rssFeed.getTitle();
                 String description = rssFeed.getDescription();
 
-                setUpScoreboard();
+                //setUpScoreboard();
 
 
                 /*ScoreView scoreView;
@@ -82,8 +95,8 @@ public class HomeActivity extends AppCompatActivity {
                 RssItem rssItem = rssFeed.getRssItems().get(0);
                 rssItem.getTitle();
 
-                MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.luxury);
-                mediaPlayer.start();
+                //MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.luxury);
+                //mediaPlayer.start();
 
             }
 
@@ -96,7 +109,14 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void onButtonClick(View v) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu);
+        return true;
+    }
+
+    /*public void onButtonClick(View v) {
 
         VideoView videoView = (VideoView) findViewById(R.id.videoview);
         videoView.seekTo(0);
@@ -104,9 +124,9 @@ public class HomeActivity extends AppCompatActivity {
         //videoView.setVideoURI(uri);
         videoView.start();
 
-    }
+    }*/
 
-    public void setUpScoreboard() {
+    /*public void setUpScoreboard() {
 
         ViewGroup layout = (ViewGroup) findViewById(R.id.score_board);
         ScoreView scoreView = new ScoreView(context);
@@ -129,5 +149,5 @@ public class HomeActivity extends AppCompatActivity {
         scoreView.setScores("Bath", 3, "Wasps", 24);
         layout.addView(scoreView);
 
-    }
+    }*/
 }

@@ -15,7 +15,8 @@
             android:gravity="right"
             android:layout_weight="0.5"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="24dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:id="@+id/team_1_score"
             android:background="@color/darkBlue"
@@ -24,7 +25,8 @@
             android:text="0"
             android:textColor="@color/lightText"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="24dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:id="@+id/team_2_score"
             android:background="@color/darkBlue"

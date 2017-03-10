@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="darkBlue">#124e80</color>
+    <color name="replayBackground">#114e7a</color>
     <color name="lightText">#FFFFFF</color>
     <color name="background">#cecece</color>
+    <color name="darkBackground">#2a2a2a</color>
     <color name="scoreBackground">#FFFFFF</color>
+    <color name="red">#FF0000</color>
 </resources>

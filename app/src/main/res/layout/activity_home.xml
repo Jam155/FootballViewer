@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,27 +8,72 @@
     tools:context="uk.co.kinocreative.footballviewer.HomeActivity"
     android:background="@color/background">
 
-    <LinearLayout
-        android:id="@+id/score_board"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/app_toolbar"
+        android:layout_width="368dp"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:icon="@drawable/ic_action_falcons"/>
+
+    <uk.co.kinocreative.footballviewer.ScoreBoardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </uk.co.kinocreative.footballviewer.ScoreBoardView>
+
+    <uk.co.kinocreative.footballviewer.ReplayVideoView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:id="@+id/replay_video">
+
+    </uk.co.kinocreative.footballviewer.ReplayVideoView>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/darkBackground"
+                android:textColor="@color/lightText"
+                android:padding="6dp"
+                android:textSize="12pt"
+                android:text="Betting"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/darkBackground"
+                android:textColor="@color/lightText"
+                android:padding="6dp"
+                android:textSize="12pt"
+                android:text="Food" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:id="@+id/scrollView2">
         <LinearLayout
             android:id="@+id/rss_feed"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp">
+            android:orientation="vertical">
         </LinearLayout>
     </ScrollView>
 
-    <VideoView
+    <!--VideoView
         android:id="@+id/videoview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -37,6 +83,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play Video"
-        android:onClick="onButtonClick"/>
+        android:onClick="onButtonClick"/-->
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
